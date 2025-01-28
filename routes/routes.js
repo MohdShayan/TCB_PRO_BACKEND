@@ -1,17 +1,18 @@
 import express from 'express';
 import {getAllUsers } from '../controllers/userController.js';
 import { createExpense, getAllExpenses } from '../controllers/expenseController.js';
-import { createBudget } from '../controllers/budgetController.js';
+import { createMonthlyBudget, getAllMonthlyBudgets } from '../controllers/budgetController.js';
 import checkForAuthentication from '../middleware/auth.js';
 
 const router = express.Router();
 
 router.get('/user/getall', getAllUsers);
 
-
 router.get('/expense', getAllExpenses);
+router.post('/all-monthly-budget', getAllMonthlyBudgets);
 router.post('/expense', createExpense);
-router.post('/budget', createBudget);
+//router.post('/budget', createBudget);
+router.post('/monthly-budget', createMonthlyBudget);
 
 const products = [
     {
@@ -47,4 +48,7 @@ const products = [
     });
   });
 
+
+
+  
 export default router;
